@@ -1,0 +1,117 @@
+{
+  "version": 2,
+  "selection_policy": {
+    "options_per_decision": 3,
+    "recommend_one": true,
+    "wait_for_user_unless_autonomous": true,
+    "constant_anchor_for_previews": true,
+    "preview_directory": "slides/theme-options"
+  },
+  "semantic_token_contract": [
+    "canvas",
+    "surface_dark",
+    "text_primary",
+    "text_inverse",
+    "accent_primary",
+    "accent_secondary",
+    "evidence_positive",
+    "risk",
+    "grid"
+  ],
+  "profiles": [
+    {
+      "id": "tech-investors",
+      "label": "Tech Investors",
+      "purpose": "Fast analytical scanning, product credibility, and high-contrast investor storytelling.",
+      "tone": "Precise, energetic, product-forward",
+      "tokens": {
+        "canvas": "#F7F8FA",
+        "surface_dark": "#101318",
+        "text_primary": "#111827",
+        "text_inverse": "#FFFFFF",
+        "accent_primary": "#00A8C6",
+        "accent_secondary": "#D9A400",
+        "evidence_positive": "#2E8B57",
+        "risk": "#C2414B",
+        "grid": "#CBD5E1"
+      },
+      "chart_sequence": [
+        "#00A8C6",
+        "#D9A400",
+        "#5B6CFF",
+        "#2E8B57",
+        "#C2414B"
+      ],
+      "photo_grade": "Neutral-to-cool, crisp contrast, restrained saturation, natural skin tones",
+      "chart_behavior": "Emphasize one decisive series; use cyan for the selected path and gold for economic proof.",
+      "avoid": "All-blue corporate palettes, purple AI gradients, neon overload, and decorative dark dashboards"
+    },
+    {
+      "id": "educators",
+      "label": "Educators",
+      "purpose": "Human-centered explanation, accessibility, learning outcomes, and approachable evidence.",
+      "tone": "Warm, clear, inclusive",
+      "tokens": {
+        "canvas": "#FAFAF7",
+        "surface_dark": "#253238",
+        "text_primary": "#1F2933",
+        "text_inverse": "#FFFFFF",
+        "accent_primary": "#197A7A",
+        "accent_secondary": "#D9902F",
+        "evidence_positive": "#3E7C59",
+        "risk": "#B64B5A",
+        "grid": "#D8DED8"
+      },
+      "chart_sequence": [
+        "#197A7A",
+        "#D9902F",
+        "#4F6D9A",
+        "#3E7C59",
+        "#B64B5A"
+      ],
+      "photo_grade": "Natural warm light, moderate contrast, gentle saturation, authentic classroom and working environments",
+      "chart_behavior": "Favor direct labels and accessible comparisons; use teal for learning flow and marigold for emphasis.",
+      "avoid": "Childlike classroom motifs, pastel-only palettes, beige monotony, and color-coded meaning without labels"
+    },
+    {
+      "id": "university-leadership",
+      "label": "University Leadership",
+      "purpose": "Institutional credibility, strategic governance, operational confidence, and executive decision-making.",
+      "tone": "Composed, authoritative, strategic",
+      "tokens": {
+        "canvas": "#F7F5F0",
+        "surface_dark": "#172235",
+        "text_primary": "#101820",
+        "text_inverse": "#FFFFFF",
+        "accent_primary": "#A67C00",
+        "accent_secondary": "#356F7A",
+        "evidence_positive": "#2F7D5B",
+        "risk": "#9E3F4A",
+        "grid": "#D5D8DC"
+      },
+      "chart_sequence": [
+        "#A67C00",
+        "#356F7A",
+        "#7C455A",
+        "#2F7D5B",
+        "#718096"
+      ],
+      "photo_grade": "Natural institutional light, restrained saturation, composed contrast, realistic materials and skin tones",
+      "chart_behavior": "Use gold for institutional priority, teal for systems and expansion, and burgundy only for material risk.",
+      "avoid": "Generic collegiate crests, faux heritage styling, navy-only monotony, and ornamental executive decoration"
+    }
+  ],
+  "custom_mode": {
+    "id": "brand-custom",
+    "label": "Existing Brand / Custom",
+    "purpose": "Preserve supplied brand identity and derive accessible supporting tokens around locked brand colors.",
+    "required_inputs": [
+      "brand colors or brand guide",
+      "logo assets",
+      "audience",
+      "presentation setting"
+    ],
+    "locked_rule": "Never silently replace a supplied brand color. Lock it, define its semantic role, and adapt supporting colors around it.",
+    "validation_rule": "Apply the same semantic token contract, contrast checks, chart differentiation, photography treatment, and selection persistence used by curated profiles."
+  }
+}
