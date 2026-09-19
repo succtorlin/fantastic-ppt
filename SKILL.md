@@ -11,8 +11,8 @@ Turn a presentation into a defensible story and a visually coherent artifact. Tr
 
 ## Required Skills
 
-- **REQUIRED:** Use `imagegen` with `model: gpt-image-2` for every generated or edited raster slide asset.
-- **REQUIRED:** Do not silently substitute another image model. If GPT Image 2 is unavailable, preserve approved real assets and native graphics, report the blocked image step, and wait for access or explicit user authorization to change models.
+- **REQUIRED:** Prefer GPT Image 2.5 (`gpt-image-2.5`) for every generated or edited raster asset; use GPT Image 2 (`gpt-image-2`) when 2.5 is unavailable. Verify the exact supported identifier with the active provider; this policy is not a claim of model availability.
+- **REQUIRED:** Do not silently substitute another image model. The GPT Image 2 fallback is authorized without further confirmation; disclose it and record why it was used. If neither model can be confirmed or invoked, preserve native work and report the blocked image step. Other models require explicit user authorization.
 - **REQUIRED:** Use `pdf` when reading or visually inspecting a PDF deck.
 - **REQUIRED:** Use `presentations` when native slide editing or richer PPTX composition is needed.
 - For information-dense slides, use `baoyu-infographic` to choose the layout and `svg-infographic` to sharpen the logical structure. Use `baoyu-article-illustrator` to choose the visual role, style, and palette.
@@ -79,7 +79,7 @@ Read [style-library.md](references/style-library.md) when the user supplies visu
 - Convert the selection into one deck-specific **Style Lock** covering typography, grid, spacing, component grammar, color ratios, photography, data behavior, header/footer rules, density, logo handling, and negative constraints.
 - Save the resolved lock to `style-used.md` and embed it in `presentation-plan.json` and every generation prompt.
 - Enforce style isolation: do not blend unrelated reference images, earlier experiments, or historical deck styles unless the user explicitly requests a hybrid.
-- For full decks of six or more slides, or whenever rhythm is uncertain, create a GPT Image 2 thumbnail rhythm board before full-size generation. Use it to validate pacing and composition, not claim-bearing copy.
+- For full decks of six or more slides, or whenever rhythm is uncertain, create a thumbnail rhythm board before full-size generation. Use it to validate pacing and composition, not claim-bearing copy.
 - Save a strong new style under `styles/<style-name>.md` only when the user asks to reuse it or the pattern is broadly reusable.
 
 ### 4. Critique the Investor Story
@@ -160,8 +160,11 @@ Create `presentation-plan.json` with the visual system and one object per slide:
     },
     "image_generation": {
       "provider": "OpenAI",
-      "model": "gpt-image-2",
-      "fallback_allowed": false,
+      "preferred_model": "gpt-image-2.5",
+      "fallback_model": "gpt-image-2",
+      "model": "<verified-selected-model>",
+      "fallback_allowed": true,
+      "fallback_reason": "<reason or not-used>",
       "asset_ledger": "asset-ledger.md"
     },
     "typography": "<deck-specific typography>",
@@ -198,24 +201,23 @@ Before generating any image, save the full prompt to `prompts/NN-slide-slug.md`.
 - source and reference image paths
 - prohibited additions: invented text, numbers, logos, citations, and watermarks
 - target aspect ratio and output path
-- an explicit generation line: `model: gpt-image-2`
+- an explicit generation line naming the verified model, either `model: gpt-image-2.5` or `model: gpt-image-2`
 - the complete deck `Style Lock`, thumbnail-board reference when used, and prohibited style drift
 
 Use English prompts unless the requested slide language requires otherwise. Keep on-slide copy short enough to render reliably.
 
-### 8. Pass the GPT Image 2 Generation Gate
+### 8. Pass the Image Model Generation Gate
 
-GPT Image 2 is the mandatory raster generation and editing backend for this skill. Before the first generation call:
-
-1. Confirm the available `imagegen` path uses `model: gpt-image-2`.
-2. Record `provider`, `model`, prompt path, reference assets, output path, generation/edit mode, and timestamp in `asset-ledger.md`.
-3. Put `model: gpt-image-2` in every saved prompt and `presentation-plan.json`.
-4. Reject mixed-model visual sets unless the user explicitly authorizes a documented exception.
-5. If the model cannot be confirmed or invoked, stop only the generated-image portion. Do not silently substitute another image model or claim GPT Image 2 provenance.
+1. Prefer GPT Image 2.5 (`gpt-image-2.5`). Confirm the active provider supports the exact model identifier and can invoke it. A name in these instructions is a preference, not proof of availability.
+2. If 2.5 is unavailable or cannot be selected/verified, use GPT Image 2 (`gpt-image-2`) if that model can be verified. This fallback is already authorized; do not ask again. A transient timeout alone is not proof of model unavailability, and content-policy refusals must not be bypassed by switching models.
+3. Record requested model, actual selected model, provider, availability evidence, fallback reason (if any), prompt path, reference assets, output path, mode and timestamp in `asset-ledger.md`. Disclose fallback to the user.
+4. Put the actual selected model in every saved prompt and `presentation-plan.json`. A tool with no model selector or reliable backend metadata does not establish either model's provenance; do not claim a model based on prompt text alone.
+5. Use one verified model consistently across the deck when possible. If availability changes mid-deck, the authorized fallback may produce a mixed set: record the model per asset and repeat continuity QA. Other substitutions require explicit authorization.
+6. If neither model can be confirmed or invoked, stop only generated-image work, retain planning/native work and report the limitation. Never falsify provenance.
 
 ### 9. Generate the Rhythm Board and Slides Sequentially
 
-For qualifying full decks, generate `thumbnail-board.png` first with GPT Image 2. It must show the planned slide rhythm, dominant visual anchors, density changes, and layout variety using tiny abstract labels or slide numbers only. It is a continuity reference, not a source of claims or a final slide. Review it against the outline, selected theme, and Style Lock before generating full-size slides.
+For qualifying full decks, generate `thumbnail-board.png` first with the verified selected image model. It must show the planned slide rhythm, dominant visual anchors, density changes, and layout variety using tiny abstract labels or slide numbers only. It is a continuity reference, not a source of claims or a final slide. Review it against the outline, selected theme, and Style Lock before generating full-size slides.
 
 Generate slides one at a time.
 
@@ -230,7 +232,7 @@ Generate slides one at a time.
 - Keep generated people anonymous and generic. Never label them as actual founders, employees, customers, university representatives, or endorsers without supplied identity references and approval.
 - When a user selects a visual option, create a stable selected filename or manifest entry and reference that artifact in later prompts.
 - Treat the approved theme preview as a visual anchor. Do not silently change token meanings or recolor protected logos.
-- Add logos, wordmarks, and repeated brand marks as approved native post-production assets. Do not ask GPT Image 2 to redraw them across pages.
+- Add logos, wordmarks, and repeated brand marks as approved native post-production assets. Do not ask the image model to redraw them across pages.
 
 ### 10. Revise Without Collateral Damage
 
@@ -253,7 +255,7 @@ Before composing the PPTX, inspect the available tools for agent or subagent spa
 
 The reviewer must explicitly test the Real-World Evidence First Gate. Use `REVISE` when a slide defaults to generic abstraction despite a more concrete available proof, when the plan omits `visual_evidence`, when a diagram lacks recorded necessity, or when a photorealistic generated scene lacks visible AI-generated/non-endorsement disclosure.
 
-The reviewer must also reconcile each generated asset against `asset-ledger.md`. Use `REVISE` when GPT Image 2 provenance is missing, the saved prompt omits `model: gpt-image-2`, or an undeclared model substitution appears.
+The reviewer must also reconcile each generated asset against `asset-ledger.md`. Use `REVISE` when actual model provenance is missing, the saved prompt or plan disagrees with the asset ledger, an authorized fallback lacks its reason, or an unauthorized model substitution appears.
 
 For full decks, compare the final montage with the thumbnail rhythm board and Style Lock. Use `REVISE` for accidental style blending, component drift, repetitive composition, uncontrolled density, inconsistent image grading, or a full-size slide that no longer serves the planned deck rhythm.
 
@@ -294,8 +296,8 @@ For substantial decks, preserve the editable source, final PPTX, slide renders, 
 | Invent team portraits to make a slide feel human | Use supplied portraits or neutral identity-safe treatments |
 | Pick attractive hex values independently on every slide | Select one audience profile and persist semantic tokens in the plan |
 | Start a full deck without a user-facing theme choice | Pass the Theme Choice Gate with three comparable options or record autonomous selection |
-| Use whichever image model is convenient | Enforce the GPT Image 2 Generation Gate and record provenance in the asset ledger |
-| Substitute another model when GPT Image 2 fails | Stop the generated-image step and disclose the block; never falsify provenance |
+| Use whichever image model is convenient | Enforce the Image Model Generation Gate and record provenance in the asset ledger |
+| Preferred model unavailable | Use verified GPT Image 2 as the authorized fallback; disclose and record it. Stop image generation if neither model is verifiable |
 | Override brand colors to fit a preset | Lock supplied brand tokens and derive accessible supporting colors |
 | Compare palettes using different layouts | Preview themes on the same representative slide |
 | Encode chart meaning through color alone | Add direct labels, shapes, or line styles and test grayscale differentiation |

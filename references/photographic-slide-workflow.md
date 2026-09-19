@@ -15,9 +15,9 @@ Do not skip to a diagram for convenience. Do not add decorative people or object
 
 ## Mandatory Image Backend
 
-GPT Image 2 is mandatory for every generated or edited raster asset in this workflow. Invoke the available image-generation path with `model: gpt-image-2`, save that model line in the prompt, and record provenance in the deck asset ledger.
+Prefer GPT Image 2.5 (`gpt-image-2.5`) for generated or edited raster assets. Verify the exact supported identifier and availability through the active provider before invoking it. If unavailable, use the authorized GPT Image 2 (`gpt-image-2`) fallback without asking again. Follow the Image Model Generation Gate in SKILL.md.
 
-No silent fallback is permitted. If GPT Image 2 cannot be confirmed or invoked, stop the generated-image step, preserve all completed planning and native slide work, and report the unavailable backend. Never substitute another model while labeling the result as GPT Image 2.
+No silent fallback is permitted: disclose the fallback and record the actual selected model and reason in the prompt, plan and asset ledger. If neither model can be confirmed or invoked, stop only image generation and preserve completed work. Model names in prompts alone do not prove which backend was used.
 
 ## Intake For Scoped Slide Work
 

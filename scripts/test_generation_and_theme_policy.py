@@ -15,7 +15,12 @@ def require(path: Path, phrases: list[str]) -> None:
 require(
     ROOT / "SKILL.md",
     [
-        "GPT Image 2 Generation Gate",
+        "Image Model Generation Gate",
+        "preferred_model",
+        "fallback_model",
+        "gpt-image-2.5",
+        "This fallback is already authorized",
+        "If neither model can be confirmed or invoked",
         "model: gpt-image-2",
         "Do not silently substitute another image model",
         "Theme Choice Gate",
@@ -36,7 +41,8 @@ require(
 require(
     ROOT / "references" / "photographic-slide-workflow.md",
     [
-        "GPT Image 2 is mandatory",
+        "Prefer GPT Image 2.5",
+        "authorized GPT Image 2",
         "gpt-image-2",
         "No silent fallback",
     ],

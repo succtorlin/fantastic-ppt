@@ -26,7 +26,7 @@ Favor warm gray or off-white canvas, near-black text, one deep institutional acc
 
 ### Photography And Evidence
 
-Prefer documentary-feeling institutional environments, real work artifacts, product-in-context, and anonymous professional workflows. GPT Image 2 scenes must feel specific to the claimed work and carry the required visible generated-scene disclosure.
+Prefer documentary-feeling institutional environments, real work artifacts, product-in-context, and anonymous professional workflows. GPT Image 2.5 (GPT Image 2 fallback) scenes must feel specific to the claimed work and carry the required visible generated-scene disclosure.
 
 ### Data And Diagram Behavior
 
@@ -34,15 +34,15 @@ Use direct labels, restrained charts, and physical evidence before abstract diag
 
 ### Header, Footer, Sources, And Logos
 
-Use quiet section markers and readable source notes. Add logos as approved native assets with consistent clear space; never ask GPT Image 2 to recreate them.
+Use quiet section markers and readable source notes. Add logos as approved native assets with consistent clear space; never ask GPT Image 2.5 (GPT Image 2 fallback) to recreate them.
 
 ### Density Limits
 
 One leadership conclusion per slide. Normal slides use one headline, one proof line, and up to three evidence groups. Leave-behind slides may carry more detail when explicitly designed for reading.
 
-### GPT Image 2 Prompt Prefix
+### GPT Image 2.5 (GPT Image 2 fallback) Prompt Prefix
 
-`model: gpt-image-2. Create a realistic institutional editorial scene with natural materials, credible professional behavior, restrained saturation, composed contrast, and clear negative space for native PowerPoint text.`
+`model: <verified-selected-model>. Create a realistic institutional editorial scene with natural materials, credible professional behavior, restrained saturation, composed contrast, and clear negative space for native PowerPoint text.`
 
 ### Negative Constraints
 
@@ -50,4 +50,4 @@ No generic AI circuitry, glowing brains, holograms, futuristic dashboards, fake 
 
 ### QA Checks
 
-Verify leadership relevance, claim-image alignment, credible human behavior, style isolation, presentation-distance readability, native editability of critical information, brand-asset fidelity, and visible GPT Image 2 disclosure.
+Verify leadership relevance, claim-image alignment, credible human behavior, style isolation, presentation-distance readability, native editability of critical information, brand-asset fidelity, and visible GPT Image 2.5 (GPT Image 2 fallback) disclosure.

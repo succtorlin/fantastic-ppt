@@ -1,4 +1,4 @@
 interface:
   display_name: "Fantastic PPT"
-  short_description: "Editable GPT Image 2 decks with reusable styles and visual QA"
-  default_prompt: "Use $fantastic-ppt to critique, offer three audience-fit themes or saved styles, establish a reusable Style Lock, redesign with GPT Image 2 real-world evidence, preserve editable claims, render, and independently QA this presentation."
+  short_description: "Editable GPT Image 2.5 (GPT Image 2 fallback) decks with reusable styles and visual QA"
+  default_prompt: "Use $fantastic-ppt to critique, offer three audience-fit themes or saved styles, establish a reusable Style Lock, redesign with GPT Image 2.5 (GPT Image 2 fallback) real-world evidence, preserve editable claims, render, and independently QA this presentation."

@@ -1,10 +1,10 @@
 # fantastic-ppt
 
-Evidence-first GPT Image 2 presentation skill with selectable themes, reusable Style Locks, editable PowerPoint composition, and independent visual QA.
+Evidence-first GPT Image 2.5 (GPT Image 2 fallback) presentation skill with selectable themes, reusable Style Locks, editable PowerPoint composition, and independent visual QA.
 
 ## Highlights
 
-- Enforces GPT Image 2 for generated and edited raster assets.
+- Prefers GPT Image 2.5 for raster assets, with GPT Image 2 as the authorized fallback when 2.5 is unavailable.
 - Offers three audience-fit visual themes before full-deck generation.
 - Converts selected or extracted visual direction into a reusable Style Lock.
 - Keeps claim-bearing text, metrics, charts, citations, and logos editable.

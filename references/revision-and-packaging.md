@@ -4,7 +4,7 @@
 
 Translate each comment into a target slide, affected elements, required preserved elements, and expected output. Modify only that scope unless the story or shared data source makes adjacent updates necessary. Preserve untouched slides byte-for-byte when the tooling permits and visually unchanged otherwise.
 
-For generated assets, retrieve the saved prompt, Style Lock, references, and model provenance. Edit or regenerate only the affected asset with GPT Image 2, then repeat independent QA.
+For generated assets, retrieve the saved prompt, Style Lock, references, and model provenance. Edit or regenerate only the affected asset with GPT Image 2.5 (GPT Image 2 fallback), then repeat independent QA.
 
 ## Revision Log
 

@@ -33,7 +33,7 @@ Every selected or extracted style must resolve into `style-used.md` with:
 ## Data And Diagram Behavior
 ## Header, Footer, Sources, And Logos
 ## Density Limits
-## GPT Image 2 Prompt Prefix
+## GPT Image 2.5 (GPT Image 2 fallback) Prompt Prefix
 ## Negative Constraints
 ## QA Checks
 ```
@@ -48,7 +48,7 @@ Reject drift in component radius, dividers, shadows, type hierarchy, color meani
 
 ## Thumbnail Rhythm Board
 
-Create a GPT Image 2 thumbnail rhythm board for full decks of six or more slides, extracted styles, or visually consequential redesigns.
+Create a GPT Image 2.5 (GPT Image 2 fallback) thumbnail rhythm board for full decks of six or more slides, extracted styles, or visually consequential redesigns.
 
 - Use the final aspect ratio for every tile.
 - Include the cover, dense evidence pages, emotional or photographic moments, transitions, and closing slide.
